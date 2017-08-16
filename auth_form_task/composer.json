@@ -1,0 +1,12 @@
+{
+  "name": "alexeycrystal/php_auth_form_task",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Alexey Crystal",
+      "email": "alex.shabramov@gmail.com"
+    }
+  ]
+}
