@@ -6,20 +6,14 @@ namespace Entity;
 
 abstract class Identifier
 {
-    private $id;
+    private $id = -1;
 
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
+    public function setId(int $id)
     {
         $this->id = $id;
     }

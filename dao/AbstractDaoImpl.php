@@ -1,8 +1,7 @@
 <?php
 
-namespace Dao\DaoImpl;
+namespace Dao;
 
-use Dao\AbstractDao;
 use PDO;
 
 abstract class AbstractDaoImpl implements AbstractDao

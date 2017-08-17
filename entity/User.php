@@ -8,53 +8,45 @@ class User extends Identifier
     private $userName;
     private $password;
     private $email;
+    private $active;
 
-    /**
-     * @return mixed
-     */
-    public function getUserName()
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
+
+    public function getUserName(): string
     {
         return $this->userName;
     }
 
-    /**
-     * @param mixed $userName
-     */
-    public function setUserName($userName)
+    public function setUserName(string $userName)
     {
         $this->userName = $userName;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
 
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
+    public function setPassword(string $password)
     {
         $this->password = $password;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
-
 }
