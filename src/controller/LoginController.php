@@ -1,6 +1,6 @@
 <?php
 
-namespace AuthFormTask;
+namespace Controller;
 
 
 class LoginController

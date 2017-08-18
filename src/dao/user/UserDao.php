@@ -1,6 +1,6 @@
 <?php
 
-namespace Dao\User;
+namespace Dao;
 
 
 use Entity\User;

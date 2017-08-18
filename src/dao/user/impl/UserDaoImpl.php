@@ -1,9 +1,8 @@
 <?php
 
-namespace Dao\User\Impl;
+namespace Dao;
 
 
-use Dao\AbstractDaoImpl;
 use Dao\User\UserDao;
 use Entity\User;
 use Exception;
@@ -91,7 +90,7 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
             $stmt->bindParam(':username', $user->getUserName());
             $stmt->bindParam(':email', $user->getEmail());
             $stmt->bindParam(':password', $user->getPassword());
-            $stmt->bindParam(':active', $user->getActive());
+            $stmt->bindParam(':active', $user->isActive());
             $stmt->execute();
             $id = $pdo->lastInsertId();
         } catch (Exception $e) {

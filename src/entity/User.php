@@ -10,12 +10,12 @@ class User extends Identifier
     private $email;
     private $active;
 
-    public function getActive()
+    public function isActive(): bool
     {
         return $this->active;
     }
 
-    public function setActive($active)
+    public function setActive(bool $active)
     {
         $this->active = $active;
     }

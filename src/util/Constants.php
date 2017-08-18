@@ -7,8 +7,8 @@ class Constants
     /*
      * Registration form error messages
      */
-    const ERROR_EMPTY_USERNAME = 'Пустое поле логина.';
-    const ERROR_USERNAME_INCORRECT_SYMBOLS = 'Логин содержит недопустимые символы.';
+    const ERROR_EMPTY_USERNAME = 'Пустое поле Username.';
+    const ERROR_USERNAME_INCORRECT_SYMBOLS = 'Username содержит недопустимые символы.';
 
     const ERROR_EMPTY_EMAIL = 'Пустое поле email-а.';
     const ERROR_EMPTY_PASSWORD = 'Пустое поле пароля.';
