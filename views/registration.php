@@ -22,10 +22,11 @@
         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required
                autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Your password"
+               required>
         <label for="secondaryPassword" class="sr-only">Password</label>
         <input type="password" name="secondaryPassword" id="secondaryPassword" class="form-control"
-               placeholder="Password" required>
+               placeholder="Type your password again...!" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         <a class="btn btn-lg btn-primary btn-block" href="login.php">Login</a>
     </form>
