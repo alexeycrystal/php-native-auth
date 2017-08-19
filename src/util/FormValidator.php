@@ -14,14 +14,14 @@ class FormValidator
         $secondaryPassword = $_POST['secondaryPassword'];
         if (!isset($userName)) {
             array_push($errorList, Constants::ERROR_EMPTY_USERNAME);
-        } else if (!preg_match('/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/', $userName)) {
+        } else if (preg_match('/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/', $userName)) {
             array_push($errorList, Constants::ERROR_USERNAME_INCORRECT_SYMBOLS);
         }
         if (!isset($password)) {
             array_push($errorList, Constants::ERROR_EMPTY_PASSWORD);
         } else if (!isset($secondaryPassword)) {
             array_push($errorList, Constants::ERROR_EMPTY_SECONDARY_PASSWORD);
-        } else if (!strcmp($password, $secondaryPassword)) {
+        } else if (strcmp($password, $secondaryPassword)) {
             array_push($errorList, Constants::ERROR_PASSWORDS_NOT_MATCH);
         }
         if (!isset($email)) {

@@ -3,7 +3,8 @@
 namespace Dao;
 
 
-use Dao\User\UserDao;
+require('../../vendor/autoload.php');
+
 use Entity\User;
 use Exception;
 use PDOStatement;
@@ -18,15 +19,15 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
        AND password = :password';
     private const IS_USERNAME_EXISTS = 'SELECT * FROM :dbTable WHERE username=:username;';
     private const IS_EMAIL_EXISTS = 'SELECT * FROM :dbTable WHERE email=:email;';
-    private const INSERT_NEW_USER = 'INSERT INTO :dbTable (id, username, email, password, active) 
-      VALUES (:id, :username, :email, :password, :active);';
+    private const INSERT_NEW_USER = 'INSERT INTO :dbTable (username, email, password, active) 
+      VALUES (:username, :email, :password, :active);';
     private const UPDATE_USER = 'UPDATE :dbTable 
       SET username=:username, email=:email, password=:password, active=:active
       WHERE id=:id;';
     private const REMOVE_USER = 'DELETE FROM :dbTable WHERE id=:id;';
     private const LIST_ALL_USERS = 'SELECT * FROM :dbTable;';
 
-    private $dbTable;
+    private $dbTable = "user";
     private $columnNames;
 
     public function getColumnNames(): array
@@ -85,16 +86,21 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
             $pdo = $this->connect();
             $pdo->beginTransaction();
             $stmt = $pdo->prepare($user->getId() > 0 ? self::UPDATE_USER : self::INSERT_NEW_USER);
+            $userName = $user->getUserName();
+            $email = $user->getEmail();
+            $password = $user->getPassword();
+            $active = $user->isActive();
+
             $stmt->bindParam(':dbTable', $this->dbTable);
-            $stmt->bindParam(':id', $user->getId());
-            $stmt->bindParam(':username', $user->getUserName());
-            $stmt->bindParam(':email', $user->getEmail());
-            $stmt->bindParam(':password', $user->getPassword());
-            $stmt->bindParam(':active', $user->isActive());
+            $stmt->bindParam(':username', $userName);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':active', $active);
             $stmt->execute();
             $id = $pdo->lastInsertId();
         } catch (Exception $e) {
             $pdo->rollBack();
+            echo $e;
         } finally {
             $this->disconnect();
         }
