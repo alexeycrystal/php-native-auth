@@ -8,7 +8,7 @@ class User extends Identifier
     private $userName;
     private $password;
     private $email;
-    private $active;
+    private $active = true;
 
     public function isActive(): bool
     {

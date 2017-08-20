@@ -30,7 +30,7 @@ function registerUser()
         if ($userId > 0) {
             session_start();
             $_SESSION['user'] = $userId;
-            header('Location: index.php');
+            header('Location: ../views/index.php');
         }
     }
 }
