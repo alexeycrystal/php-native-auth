@@ -5,6 +5,12 @@ namespace Util;
 class Constants
 {
     /*
+     * Headers values
+     */
+    const REDIRECT_TO_INDEX_HEADER = 'Location:/index.php';
+    const REDIRECT_TO_LOGIN_HEADER = 'Location:/views/login.php';
+
+    /*
      * Registration form error messages
      */
     const ERROR_EMPTY_USERNAME = 'Пустое поле Username.';
@@ -19,4 +25,6 @@ class Constants
     const ERROR_EMAIL_EXISTS = 'Этот email уже занят другим пользователем. Попробуйте выбрать другой.';
     const ERROR_PASSWORDS_NOT_MATCH = 'Пароли не совпадают.Проверьте правильность обеих полей.';
     const ERROR_PASSWORD_IS_TO_SHORT = 'Пароль содержит менее 6 символов. Он должен быть больше 6 символов и не больше 30.';
+
+    const USER_NOT_EXISTS = 'Пользователя с таким username и паролем не существует. Проверьте Ваш ввод и попробуйте заново.';
 }

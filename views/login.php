@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -7,15 +8,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form class="form-signin" method="POST">
+<form action="../src/controller/LoginController.php" class="form-signin" method="POST">
     <h2 class="form-signin-heading">Please Login</h2>
-    <?php if (isset($smsg)) { ?>
-        <div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
-    <?php if (isset($fmsg)) { ?>
-        <div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+    <?php if (isset($_SESSION['errorList'])) {
+        echo '<b>Были обнаружены ошибки:</b>';
+        echo '<ul>';
+        foreach ($_SESSION['errorList'] as $value) {
+            echo '<li>' . $value . '</li>';
+        }
+        echo '</ul>';
+        unset($_SESSION['errorList']);
+    }
+
+    ?>
     <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">@</span>
-        <input type="text" name="username" class="form-control" placeholder="Username" required>
+        <span class="input-group-addon" id="basic-addon1">Username / Email</span>
+        <input type="text" name="usernameOrEmail" class="form-control" placeholder="Your username or email" required>
     </div>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>

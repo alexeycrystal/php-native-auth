@@ -7,9 +7,9 @@ use Entity\User;
 
 interface UserDao
 {
-    function get(int $id): User;
+    function get(int $id): ?User;
 
-    function getByLoginOrEmail(string $loginOrEmail, string $password): User;
+    function getByLoginOrEmail(string $loginOrEmail, string $password): ?User;
 
     function isUserNameExists(string $username): bool;
 

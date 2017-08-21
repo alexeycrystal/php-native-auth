@@ -15,10 +15,9 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
 
     private const SELECT_USER_BY_ID = 'SELECT * FROM  ' . self::DB_TABLE . ' WHERE `id`=:id;';
     private const SELECT_USER_BY_LOGIN_OR_EMAIL = '
-    SET @loginOrEmail = :loginOrEmail 
     SELECT * FROM  ' . self::DB_TABLE . '
-       WHERE ( `username` = @loginOrEmail OR `email` = @loginOrEmail) 
-       AND `password` = :password';
+       WHERE ( `username` = :loginOrEmail OR `email` = :loginOrEmail) 
+       AND `password` = :password;';
     private const IS_USERNAME_EXISTS = 'SELECT * FROM  ' . self::DB_TABLE . ' WHERE `username`=:username;';
     private const IS_EMAIL_EXISTS = 'SELECT * FROM  ' . self::DB_TABLE . ' WHERE `email`=:email;';
 
@@ -31,7 +30,7 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
     private const REMOVE_USER = 'DELETE FROM  ' . self::DB_TABLE . ' WHERE `id`=:id;';
     private const LIST_ALL_USERS = 'SELECT * FROM  ' . self::DB_TABLE . ';';
 
-    public function get(int $id): User
+    public function get(int $id): ?User
     {
         try {
             $pdo = $this->connect();
@@ -45,6 +44,17 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
             $this->disconnect();
         }
         return null;
+    }
+
+    private function fetchUser(PDOStatement $stmt): User
+    {
+        $user = New User();
+        $user->setId($stmt->fetchColumn(0));
+        $user->setUserName($stmt->fetchColumn(1));
+        $user->setPassword($stmt->fetchColumn(2));
+        $user->setEmail($stmt->fetchColumn(3));
+        $stmt = null;
+        return $user;
     }
 
     public function save(User $user): int
@@ -111,7 +121,7 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
         return $users;
     }
 
-    public function getByLoginOrEmail(string $loginOrEmail, string $password): User
+    public function getByLoginOrEmail(string $loginOrEmail, string $password): ?User
     {
         try {
             $pdo = $this->connect();
@@ -119,13 +129,10 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
             $stmt->bindParam(':loginOrEmail', $loginOrEmail, PDO::PARAM_STR);
             $stmt->bindParam(':password', $password, PDO::PARAM_STR);
             $stmt->execute();
-            if ($stmt->rowCount() > 0) {
-                return $this->fetchUser($stmt);
-            }
+            return $stmt->rowCount() > 0 ? $this->fetchUser($stmt) : null;
         } finally {
             $this->disconnect();
         }
-        return null;
     }
 
     function isUserNameExists(string $username): bool
@@ -152,16 +159,5 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
         } finally {
             $this->disconnect();
         }
-    }
-
-    private function fetchUser(PDOStatement $stmt): User
-    {
-        $user = New User();
-        $user->setId($stmt->fetchColumn(0));
-        $user->setUserName($stmt->fetchColumn(1));
-        $user->setPassword($stmt->fetchColumn(2));
-        $user->setEmail($stmt->fetchColumn(3));
-        $stmt = null;
-        return $user;
     }
 }
