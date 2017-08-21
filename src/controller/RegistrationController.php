@@ -14,13 +14,13 @@ if ($_POST) {
 
 function registerUser()
 {
-    $errorList = FormValidator::validateRegForm();
+    $userDao = New UserDaoImpl();
+    $errorList = FormValidator::validateRegForm($userDao);
     if (!empty($errorList)) {
         foreach ($errorList as $error) {
             echo $error;
         }
     } else {
-        $userDao = New UserDaoImpl();
         $user = New User();
         $user->setUserName($_POST['username']);
         $user->setPassword($_POST['password']);
@@ -30,7 +30,8 @@ function registerUser()
         if ($userId > 0) {
             session_start();
             $_SESSION['user'] = $userId;
-            header('Location: ../views/index.php');
+            header('Location:/index.php');
+            die();
         }
     }
 }
