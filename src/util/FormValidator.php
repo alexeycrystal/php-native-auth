@@ -10,9 +10,8 @@ class FormValidator
 {
     private const USERNAME_PATTERN = '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/';
 
-    public static function &validateRegForm(UserDao $userDao): array
+    public static function &validateRegForm(array &$errorList, UserDao $userDao): array
     {
-        $errorList = array();
         $email = $_POST['email'];
         $userName = $_POST['username'];
         $password = $_POST['password'];

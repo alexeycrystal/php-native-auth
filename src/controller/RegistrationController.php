@@ -2,36 +2,38 @@
 
 namespace Controller;
 
-require('../../vendor/autoload.php');
-
 use Dao\UserDaoImpl;
 use Entity\User;
+use Util\Constants;
 use Util\FormValidator;
 
-if ($_POST) {
-    registerUser();
-}
+require('../../vendor/autoload.php');
 
-function registerUser()
+class RegistrationController
 {
-    $userDao = New UserDaoImpl();
-    $errorList = FormValidator::validateRegForm($userDao);
-    if (!empty($errorList)) {
-        foreach ($errorList as $error) {
-            echo $error;
-        }
-    } else {
-        $user = New User();
-        $user->setUserName($_POST['username']);
-        $user->setPassword($_POST['password']);
-        $user->setEmail($_POST['email']);
-        $user->setActive(true);
-        $userId = $userDao->save($user);
-        if ($userId > 0) {
-            session_start();
-            $_SESSION['user'] = $userId;
-            header('Location:/index.php');
-            die();
+    public static function registerUser()
+    {
+        session_start();
+        $errorList = array();
+        $userDao = New UserDaoImpl();
+        $errorList = FormValidator::validateRegForm($errorList, $userDao);
+        if (!empty($errorList)) {
+            $_SESSION['errorList'] = $errorList;
+            header(Constants::REDIRECT_TO_REGISTRATION_HEADER);
+        } else {
+            $user = New User();
+            $user->setUserName($_POST['username']);
+            $user->setPassword($_POST['password']);
+            $user->setEmail($_POST['email']);
+            $user->setActive(true);
+            $userId = $userDao->save($user);
+            if ($userId > 0) {
+                session_start();
+                $_SESSION['user'] = $userId;
+                header('Location:/index.php');
+            }
         }
     }
 }
+
+

@@ -1,12 +1,12 @@
 {
-  "name": "vendor_name/package_name",
-  "description": "description_text",
+  "name": "alexeycrystal/php_native_auth",
+  "description": "PHP native auth example",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
-      "name": "author's name",
-      "email": "email@example.com"
+      "name": "Alexey Crystal",
+      "email": "alex.shabramov@gmail.com"
     }
   ],
   "autoload": {

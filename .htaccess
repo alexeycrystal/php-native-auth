@@ -1,0 +1,6 @@
+#Options +FollowSymLinks
+#RewriteEngine On
+# Redirect requests to index.php
+#RewriteBase /
+#RewriteCond %{HTTP_HOST} ^(www\.)?a\.fr$ [NC]
+#RewriteRule ^ http://a.com%{REQUEST_URI} [R=301,L]

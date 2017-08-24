@@ -5,10 +5,17 @@ namespace Util;
 class Constants
 {
     /*
+     * Pages
+     */
+    const INDEX_PAGE_LOCATION = '/index.php';
+    const LOGIN_PAGE_LOCATION = '/views/login.php';
+    const REGISTRATION_PAGE_LOCATION = '/views/registration.php';
+    /*
      * Headers values
      */
     const REDIRECT_TO_INDEX_HEADER = 'Location:/index.php';
     const REDIRECT_TO_LOGIN_HEADER = 'Location:/views/login.php';
+    const REDIRECT_TO_REGISTRATION_HEADER = 'Location:/views/registration.php';
 
     /*
      * Registration form error messages
