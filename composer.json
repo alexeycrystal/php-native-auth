@@ -14,7 +14,8 @@
       "Controller\\": "src/controller",
       "Util\\": "src/util",
       "Entity\\": "src/entity",
-      "Dao\\": "src/dao"
+      "Dao\\": "src/dao",
+      "Route\\": "/"
     }
   }
 }

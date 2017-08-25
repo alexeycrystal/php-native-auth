@@ -1,6 +1,14 @@
-#Options +FollowSymLinks
-#RewriteEngine On
-# Redirect requests to index.php
-#RewriteBase /
-#RewriteCond %{HTTP_HOST} ^(www\.)?a\.fr$ [NC]
-#RewriteRule ^ http://a.com%{REQUEST_URI} [R=301,L]
+Options +SymLinksIfOwnerMatch
+RewriteEngine On
+
+# .htaccess file deffence
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+#С помощью этого простого сниппета кода можно добиться, чтобы запросы файла переправлялись в корневой каталог.
+#RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.php\ HTTP/
+#RewriteRule ^(.*)index\.php$ /$1 [R=301,L]
+
+FallbackResource route.php

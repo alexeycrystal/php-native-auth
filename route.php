@@ -1,10 +1,14 @@
 <?php
 
+namespace Route;
+
 use Controller\LoginController;
 use Controller\RegistrationController;
+use Util\Constants;
 
-require_once('../../vendor/autoload.php');
-require_once('../util/views.php');
+require_once('vendor/autoload.php');
+require_once('src/util/views.php');
+
 
 session_start();
 if ($_GET) {
@@ -16,8 +20,7 @@ if ($_GET) {
         header('Location:' . $pages[$_GET["route"]]);
         die();
     } else {
-        header("HTTP/1.1 404 Not Found");
-        die();
+        errorPageNotFound();
     }
 } elseif ($_POST) {
     if (isset($_SESSION['user'])) {
@@ -34,6 +37,16 @@ if ($_GET) {
                 RegistrationController::registerUser();
             }
         }
+    } else {
+        errorPageNotFound();
     }
+} else {
+    errorPageNotFound();
+}
+
+function errorPageNotFound()
+{
+    header(Constants::REDIRECT_TO_ERROR_HEADER);
+    die();
 }
 

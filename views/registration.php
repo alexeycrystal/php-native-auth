@@ -7,7 +7,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form action="../src/route/route.php" class="form-signin" method="POST">
+<form action="../route.php" class="form-signin" method="POST">
     <h2 class="form-signin-heading">Please Register</h2>
     <?php require '../views/errors.php'; ?>
     <div class="input-group">

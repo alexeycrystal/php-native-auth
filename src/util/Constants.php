@@ -17,6 +17,7 @@ class Constants
     const REDIRECT_TO_INDEX_HEADER = 'Location:/index.php';
     const REDIRECT_TO_LOGIN_HEADER = 'Location:/views/login.php';
     const REDIRECT_TO_REGISTRATION_HEADER = 'Location:/views/registration.php';
+    const REDIRECT_TO_ERROR_HEADER = 'Location:/views/errors/error.php';
 
     /*
      * Registration form error messages
