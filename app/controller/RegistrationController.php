@@ -7,7 +7,6 @@ use Entity\User;
 use Util\Constants;
 use Util\FormValidator;
 
-require('../../vendor/autoload.php');
 
 class RegistrationController
 {
@@ -30,7 +29,11 @@ class RegistrationController
             if ($userId > 0) {
                 session_start();
                 $_SESSION['user'] = $userId;
-                header('Location:/index.php');
+                header(Constants::REDIRECT_TO_INDEX_HEADER);
+            } else {
+                $errorList[] = Constants::ERROR_CAUSED_NO_INFO;
+                $_SESSION['errorList'] = $errorList;
+                header(Constants::REDIRECT_TO_REGISTRATION_HEADER);
             }
         }
     }

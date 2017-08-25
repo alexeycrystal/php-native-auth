@@ -44,17 +44,6 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
         return null;
     }
 
-    private function fetchUser(PDOStatement $stmt): User
-    {
-        $user = New User();
-        $user->setId($stmt->fetchColumn(0));
-        $user->setUserName($stmt->fetchColumn(1));
-        $user->setPassword($stmt->fetchColumn(2));
-        $user->setEmail($stmt->fetchColumn(3));
-        $stmt = null;
-        return $user;
-    }
-
     public function save(User $user): int
     {
         $id = -1;
@@ -157,5 +146,16 @@ class UserDaoImpl extends AbstractDaoImpl implements UserDao
         } finally {
             $this->disconnect();
         }
+    }
+
+    private function fetchUser(PDOStatement $stmt): User
+    {
+        $user = New User();
+        $user->setId($stmt->fetchColumn(0));
+        $user->setUserName($stmt->fetchColumn(1));
+        $user->setPassword($stmt->fetchColumn(2));
+        $user->setEmail($stmt->fetchColumn(3));
+        $stmt = null;
+        return $user;
     }
 }
