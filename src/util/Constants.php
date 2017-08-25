@@ -10,6 +10,7 @@ class Constants
     const INDEX_PAGE_LOCATION = '/index.php';
     const LOGIN_PAGE_LOCATION = '/views/login.php';
     const REGISTRATION_PAGE_LOCATION = '/views/registration.php';
+    const LOGOUT_PAGE_LOCATION = '/views/logout.php';
     /*
      * Headers values
      */

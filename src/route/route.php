@@ -3,8 +3,8 @@
 use Controller\LoginController;
 use Controller\RegistrationController;
 
-require_once('vendor/autoload.php');
-require_once('src/util/views.php');
+require_once('../../vendor/autoload.php');
+require_once('../util/views.php');
 
 session_start();
 if ($_GET) {
