@@ -2,8 +2,6 @@
 
 namespace Dao;
 
-require('../../vendor/autoload.php');
-
 use Entity\User;
 use Exception;
 use PDO;

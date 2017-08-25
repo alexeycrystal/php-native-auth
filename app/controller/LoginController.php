@@ -6,7 +6,6 @@ use Dao\UserDaoImpl;
 use Util\Constants;
 use Util\FormValidator;
 
-require('../../vendor/autoload.php');
 
 class LoginController
 {

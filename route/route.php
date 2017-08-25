@@ -6,14 +6,13 @@ use Controller\LoginController;
 use Controller\RegistrationController;
 use Util\Constants;
 
-require_once('vendor/autoload.php');
-require_once('src/util/views.php');
-
+require_once('../vendor/autoload.php');
+require_once('../app/util/views.php');
 
 session_start();
 if ($_GET) {
     if (isset($_SESSION['user']) && in_array($_GET["route"], $excludesForLoggedIn)) {
-        header('Location:/index.php');
+        header(Constants::REDIRECT_TO_INDEX_HEADER);
         die();
     }
     if (isset($_GET["route"]) && array_key_exists($_GET["route"], $pages)) {
@@ -24,7 +23,7 @@ if ($_GET) {
     }
 } elseif ($_POST) {
     if (isset($_SESSION['user'])) {
-        header('Location:/index.php');
+        header(Constants::REDIRECT_TO_INDEX_HEADER);
         die();
     }
     $route = $_POST["route"];

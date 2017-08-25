@@ -11,11 +11,11 @@
   ],
   "autoload": {
     "psr-4": {
-      "Controller\\": "src/controller",
-      "Util\\": "src/util",
-      "Entity\\": "src/entity",
-      "Dao\\": "src/dao",
-      "Route\\": "/"
+      "Controller\\": "app/controller/",
+      "Util\\": "app/util/",
+      "Entity\\": "app/entity/",
+      "Dao\\": "app/dao/",
+      "Route\\": "route/"
     }
   }
 }
