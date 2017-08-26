@@ -28,11 +28,11 @@ if ($_GET) {
     }
     $route = $_POST["route"];
     if (isset($route) && array_key_exists($route, $pages)) {
-        $action = $_POST['route'];
-        if (isset($action)) {
-            if ($action = 'login') {
+        if (isset($route)) {
+
+            if ($route == 'login') {
                 LoginController::login();
-            } else if ($action = 'registration') {
+            } else if ($route == 'registration') {
                 RegistrationController::registerUser();
             }
         }
