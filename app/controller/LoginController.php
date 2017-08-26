@@ -17,7 +17,7 @@ class LoginController
         $user = FormValidator::validateLogin($errorList, $userDao);
         if (!empty($errorList)) {
             $_SESSION['errorList'] = $errorList;
-            header(Constants::REDIRECT_TO_LOGIN_HEADER);
+            header(Constants::REDIRECT_TO_INDEX_HEADER);
         } else {
             $_SESSION['user'] = $user->getId();
             header(Constants::REDIRECT_TO_INDEX_HEADER);

@@ -18,7 +18,7 @@ class RegistrationController
         $errorList = FormValidator::validateRegForm($errorList, $userDao);
         if (!empty($errorList)) {
             $_SESSION['errorList'] = $errorList;
-            header(Constants::REDIRECT_TO_REGISTRATION_HEADER);
+            header(Constants::REDIRECT_TO_INDEX_HEADER);
         } else {
             $user = New User();
             $user->setUserName($_POST['username']);
@@ -33,7 +33,7 @@ class RegistrationController
             } else {
                 $errorList[] = Constants::ERROR_CAUSED_NO_INFO;
                 $_SESSION['errorList'] = $errorList;
-                header(Constants::REDIRECT_TO_REGISTRATION_HEADER);
+                header(Constants::REDIRECT_TO_INDEX_HEADER);
             }
         }
     }

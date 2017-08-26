@@ -187,3 +187,16 @@ textarea {
     margin-top: -20px;
     text-align: right;
 }
+
+.loginErrors {
+    font-size: 22px;
+    background: #cce5ff;
+    margin: 5px;
+}
+
+.registrationErrors {
+    font-size: 22px;
+    background: #cce5ff;
+    margin: 5px;
+}
+
