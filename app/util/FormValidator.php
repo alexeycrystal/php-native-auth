@@ -16,7 +16,7 @@ class FormValidator
         $userName = $_POST['username'];
         $password = $_POST['password'];
         $secondaryPassword = $_POST['secondaryPassword'];
-        if (!isset($userName)) {
+        if (!isset($userName) || $userName === "") {
             array_push($errorList, Constants::ERROR_EMPTY_USERNAME);
         } else if (preg_match(self::USERNAME_PATTERN, $userName)) {
             array_push($errorList, Constants::ERROR_USERNAME_INCORRECT_SYMBOLS);
