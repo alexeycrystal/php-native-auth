@@ -12,14 +12,14 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
-    include_once('resources/views/logged.php');
+    @include_once('resources/views/logged.php');
 } else {
-    include_once('resources/views/loginAndRegistration.php');
+    @include_once('resources/views/loginAndRegistration.php');
 }
 ?>
 </div>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+<script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script src="resources/assets/sign-up-login-form/js/index.js"></script>
 <script src="resources/assets/sign-up-login-form/js/validator.js"></script>
 </body>

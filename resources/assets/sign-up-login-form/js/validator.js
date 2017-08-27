@@ -36,9 +36,23 @@ $(document).ready(function () {
                 equalTo: "Passwords doesn't match."
             }
         },
-        errorLabeLContainer: '#errors',
         errorPlacement: function (error, element) {
-            error.appendTo($('#registrationErrors'));
+            $errorPlacement = $("#regErrors");
+            alert(error.text());
+            if ($errorPlacement.innerHTML.indexOf("") === -1) {
+                $error = '<li>' + error.text() + '</li>';
+                $searchResult = $errorPlacement.find('ul');
+                if ($searchResult.length > 0) {
+                    $searchResult.append($error)
+                } else {
+                    $errorPlacement
+                        .append('<ul></ul>')
+                        .find('ul')
+                        .append($error);
+                }
+            } else {
+                alert(error.text());
+            }
         }
     });
     $('#login').validate({
@@ -59,7 +73,17 @@ $(document).ready(function () {
             }
         },
         errorPlacement: function (error, element) {
-            error.appendTo($('#loginErrors'));
+            $errorPlacement = $("#loginErrors");
+            $error = '<li>' + error.text() + '</li>';
+            $searchResult = $errorPlacement.find('ul');
+            if ($searchResult.length > 0) {
+                $searchResult.append($error);
+            } else {
+                $errorPlacement
+                    .append('<ul></ul>')
+                    .find('ul')
+                    .append($error);
+            }
         }
     });
 });

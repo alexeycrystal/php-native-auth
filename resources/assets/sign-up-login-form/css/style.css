@@ -189,14 +189,17 @@ textarea {
 }
 
 .loginErrors {
+    display: inline-block;
     font-size: 22px;
+    text-align: center;
     background: #cce5ff;
-    margin: 5px;
+    margin: 2px;
 }
 
 .registrationErrors {
+    display: inline-block;
     font-size: 22px;
     background: #cce5ff;
-    margin: 5px;
+    text-align: center;
+    margin: 10px;
 }
-

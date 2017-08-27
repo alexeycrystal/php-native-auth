@@ -7,7 +7,7 @@
     <div id="signup">
         <h1>Sign Up</h1>
         <form id="registration" action="../../route/route.php" method="post">
-            <div id="registrationErrors" class="registrationErrors">
+            <div id="regErrors" class="registrationErrors">
                 <?php @include('errors.php'); ?>
             </div>
             <div class="field-wrap">
@@ -51,7 +51,7 @@
         <h1>Welcome Back!</h1>
 
         <form id="login" action="../../route/route.php" method="post">
-            <div id="loginErrors" class="loginErrors">
+            <div id="logErrors" class="loginErrors">
                 <?php @include('errors.php'); ?>
             </div>
             <div class="field-wrap">
