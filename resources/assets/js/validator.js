@@ -38,7 +38,6 @@ $(document).ready(function () {
         },
         errorPlacement: function (error, element) {
             $errorPlacement = $("#regErrors");
-            alert(error.text());
             if ($errorPlacement.innerHTML.indexOf("") === -1) {
                 $error = '<li>' + error.text() + '</li>';
                 $searchResult = $errorPlacement.find('ul');
@@ -50,8 +49,6 @@ $(document).ready(function () {
                         .find('ul')
                         .append($error);
                 }
-            } else {
-                alert(error.text());
             }
         }
     });
